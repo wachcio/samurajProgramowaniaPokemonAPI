@@ -13,11 +13,16 @@
     <body>
         <main>
             <h1 class="title">Pokemon API</h1>
-            <input type="text" class="search" />
+            <input type="text" class="search" placeholder="search" />
             <section class="cards"></section>
-            <button onclick="pokemon.getDataFromAPI()">
-                Pobierz następną stronę
-            </button>
+            <div class="load_more">
+                <button
+                    onclick="pokemon.getDataFromAPI()"
+                    class="load_more__btn"
+                >
+                    Load more
+                </button>
+            </div>
         </main>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="./js/index.js"></script>

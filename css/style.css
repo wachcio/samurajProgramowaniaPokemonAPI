@@ -6,7 +6,7 @@
 }
 body {
     font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
 }
 .title {
     margin: 2em;
@@ -14,7 +14,7 @@ body {
 
 .search {
     position: absolute;
-    top: 2em;
+    top: 2.2em;
     right: 5em;
     border: none;
     border-bottom: 2px orange solid;
@@ -27,12 +27,14 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr; */
 
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
     margin-top: 2.5em;
 }
 .card {
     max-width: 245px;
+    margin-top: 1em;
 }
 .card__name {
     font-size: 1.2em;
@@ -42,4 +44,18 @@ body {
 
 .card__number {
     float: right;
+}
+.load_more {
+    width: 100%;
+    text-align: center;
+}
+
+.load_more__btn {
+    padding: 0.8em;
+
+    border: none;
+    background-color: orange;
+    font-size: 2em;
+    margin-top: 2em;
+    cursor: pointer;
 }

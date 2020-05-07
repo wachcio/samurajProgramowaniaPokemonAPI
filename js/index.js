@@ -9,20 +9,22 @@ class Pokemon {
         // Variables
         this.state = {};
         this.downloadData = {};
-        this.currentPage = 1;
+        this.currentPage = 0;
         this.isLoading = false;
         this.initialize();
         this.getDataFromAPI();
     }
 
     initialize() {}
+
     getDataFromAPI() {
         this.isLoading = true;
 
         this.downloadData = axios
-            .get(`${this.URLCards}${this.currentPage}`)
+            .get(`${this.URLCards}${this.currentPage + 1}`)
             .then(({ data }) => {
                 console.log(data);
             });
+        this.currentPage++;
     }
 }

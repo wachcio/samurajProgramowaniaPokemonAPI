@@ -46,8 +46,20 @@ body {
     float: right;
 }
 .load_more {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.load_more__loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.load_more__loader--visible {
+    display: block;
 }
 
 .load_more__btn {

@@ -6,7 +6,9 @@ class Card {
 
         this.initialize();
     }
-
+    initialize() {
+        // this.createCard();
+    }
     createCard() {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -16,9 +18,7 @@ class Card {
         card.innerHTML = `<img src=${this.cardData.imageUrl}/>`;
 
         this.UIMainElement.appendChild(card);
-    }
-    initialize() {
-        this.createCard();
+        console.log('UI', this.UIMainElement);
     }
 }
 class Pokemon {
@@ -47,9 +47,28 @@ class Pokemon {
         this.downloadData = axios
             .get(`${this.URLCards}${this.currentPage + 1}`)
             .then(({ data }) => {
-                // console.log(data);
                 this.downloadData = data;
+
+                this.createCards();
             });
         this.currentPage++;
     }
+
+    createCards() {
+        // if (this.downloadData.length > 0) {
+        console.log(typeof this.downloadData);
+        this.downloadData.forEach((e) => {
+            let card = new Card({
+                name: e.name,
+                nationalPokedexNumber: e.nationalPokedexNumber,
+                imageUrl: e.imageUrl,
+                supertype: e.supertype,
+                subtype: e.subtype,
+                rarity: e.rarity,
+            });
+            card.createCard();
+            console.log(card);
+        });
+    }
+    // }
 }

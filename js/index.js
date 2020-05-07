@@ -12,8 +12,8 @@ class Card {
     createCard() {
         const card = document.createElement('div');
         card.classList.add('card');
-
-        card.innerHTML = `<H2 class="card__name>${this.cardData.name}</H2>`;
+        card.innerHTML = '';
+        card.innerHTML += `<p class="card__name">${this.cardData.name}</p>`;
         card.innerHTML += `<p class="card__number">Nr: ${this.cardData.nationalPokedexNumber}</p>`;
         card.innerHTML += `<img class="card__img" src=${this.cardData.imageUrl}/>`;
         card.innerHTML += `<p class="card__supertype">Supertype: ${this.cardData.supertype}</p>`;
@@ -38,170 +38,195 @@ class Pokemon {
         this.downloadData = {};
 
         this.downloadData = {
+            // 20200507212445
+            // https://api.pokemontcg.io/v1/cards?pageSize=4&page=10
+
             cards: [
                 {
-                    id: 'xy7-4',
-                    name: 'Bellossom',
-                    nationalPokedexNumber: 182,
-                    imageUrl: 'https://images.pokemontcg.io/xy7/4.png',
+                    id: 'dp1-5',
+                    name: 'Infernape',
+                    nationalPokedexNumber: 392,
+                    imageUrl: 'https://images.pokemontcg.io/dp1/5.png',
                     imageUrlHiRes:
-                        'https://images.pokemontcg.io/xy7/4_hires.png',
-                    types: ['Grass'],
+                        'https://images.pokemontcg.io/dp1/5_hires.png',
+                    types: ['Fire'],
                     supertype: 'Pokémon',
                     subtype: 'Stage 2',
-                    evolvesFrom: 'Gloom',
-                    hp: '120',
-                    retreatCost: ['Colorless'],
-                    convertedRetreatCost: 1,
-                    number: '4',
-                    artist: 'Mizue',
-                    rarity: 'Uncommon',
-                    series: 'XY',
-                    set: 'Ancient Origins',
-                    setCode: 'xy7',
-                    attacks: [
-                        {
-                            cost: ['Grass'],
-                            name: 'Windmill',
-                            text:
-                                'Switch this Pokémon with 1 of your Benched Pokémon.',
-                            damage: '20',
-                            convertedEnergyCost: 1,
-                        },
-                        {
-                            cost: ['Grass', 'Colorless'],
-                            name: 'Flower Tornado',
-                            text:
-                                'Move as many Grass Energy attached to your Pokémon to your other Pokémon in any way you like.',
-                            damage: '60',
-                            convertedEnergyCost: 2,
-                        },
-                    ],
-                    weaknesses: [
-                        {
-                            type: 'Fire',
-                            value: '×2',
-                        },
-                    ],
-                },
-                {
-                    id: 'dp6-90',
-                    name: 'Cubone',
-                    nationalPokedexNumber: 104,
-                    imageUrl: 'https://images.pokemontcg.io/dp6/90.png',
-                    imageUrlHiRes:
-                        'https://images.pokemontcg.io/dp6/90_hires.png',
-                    types: ['Fighting'],
-                    supertype: 'Pokémon',
-                    subtype: 'Basic',
-                    hp: '60',
-                    retreatCost: ['Colorless'],
-                    convertedRetreatCost: 1,
-                    number: '90',
-                    artist: 'Kagemaru Himeno',
-                    rarity: 'Common',
+                    evolvesFrom: 'Monferno',
+                    hp: '100',
+                    convertedRetreatCost: 0,
+                    number: '5',
+                    artist: 'Nakaoka',
+                    rarity: 'Rare Holo',
                     series: 'Diamond & Pearl',
-                    set: 'Legends Awakened',
-                    setCode: 'dp6',
+                    set: 'Diamond & Pearl',
+                    setCode: 'dp1',
                     attacks: [
                         {
                             cost: ['Colorless'],
-                            name: 'Headbutt',
-                            text: '',
-                            damage: '10',
+                            name: 'Meteor Punch',
+                            text:
+                                'Flip a coin until you get tails. This attack does 30 damage times the number of heads.',
+                            damage: '30×',
                             convertedEnergyCost: 1,
                         },
                         {
-                            cost: ['Fighting', 'Colorless'],
-                            name: 'Bonemerang',
+                            cost: ['Fire', 'Fire'],
+                            name: 'Flare Blitz',
                             text:
-                                'Flip 2 coins. This attack does 20 damage times the number of heads.',
-                            damage: '20×',
+                                'Discard all Fire Energy attached to Infernape.',
+                            damage: '90',
                             convertedEnergyCost: 2,
-                        },
-                    ],
-                    resistances: [
-                        {
-                            type: 'Lightning',
-                            value: '-20',
                         },
                     ],
                     weaknesses: [
                         {
                             type: 'Water',
-                            value: '+10',
+                            value: '+30',
                         },
                     ],
                 },
                 {
-                    id: 'ex14-85',
-                    name: 'Windstorm',
-                    imageUrl: 'https://images.pokemontcg.io/ex14/85.png',
+                    id: 'xy7-98',
+                    name: 'M Rayquaza-EX',
+                    nationalPokedexNumber: 384,
+                    imageUrl: 'https://images.pokemontcg.io/xy7/98.png',
                     imageUrlHiRes:
-                        'https://images.pokemontcg.io/ex14/85_hires.png',
-                    supertype: 'Trainer',
-                    subtype: 'Item',
-                    hp: 'None',
-                    number: '85',
-                    artist: 'Ryo Ueda',
-                    rarity: 'Uncommon',
-                    series: 'EX',
-                    set: 'Crystal Guardians',
-                    setCode: 'ex14',
+                        'https://images.pokemontcg.io/xy7/98_hires.png',
+                    types: ['Colorless'],
+                    supertype: 'Pokémon',
+                    subtype: 'MEGA',
+                    evolvesFrom: 'Rayquaza-EX',
+                    hp: '220',
+                    retreatCost: ['Colorless'],
+                    convertedRetreatCost: 1,
+                    number: '98',
+                    artist: '5ban Graphics',
+                    rarity: 'Rare Ultra',
+                    series: 'XY',
+                    set: 'Ancient Origins',
+                    setCode: 'xy7',
                     text: [
-                        "Choose up to 2 in any combination of Pokémon Tool cards and Stadium cards in play (both yours and your opponent's) and discard them.",
+                        'When a Pokémon-EX has been Knocked Out, your opponent takes 2 Prize cards.',
+                        'When 1 of your Pokémon becomes this Pokémon, heal all damage from it.',
+                        'When 1 of your Pokémon becomes a Mega Evolution Pokémon, your turn ends.',
+                    ],
+                    attacks: [
+                        {
+                            cost: ['Colorless', 'Colorless', 'Colorless'],
+                            name: 'Emerald Break',
+                            text:
+                                'This attack does 30 damage times the number of your Benched Pokémon.',
+                            damage: '30×',
+                            convertedEnergyCost: 3,
+                        },
+                    ],
+                    resistances: [
+                        {
+                            type: 'Fighting',
+                            value: '-20',
+                        },
+                    ],
+                    weaknesses: [
+                        {
+                            type: 'Lightning',
+                            value: '×2',
+                        },
                     ],
                 },
                 {
-                    id: 'ex8-100',
-                    name: 'Hariyama ex',
-                    nationalPokedexNumber: 297,
-                    imageUrl: 'https://images.pokemontcg.io/ex8/100.png',
+                    id: 'ex14-91',
+                    name: 'Delcatty ex',
+                    nationalPokedexNumber: 301,
+                    imageUrl: 'https://images.pokemontcg.io/ex14/91.png',
                     imageUrlHiRes:
-                        'https://images.pokemontcg.io/ex8/100_hires.png',
-                    types: ['Fighting'],
+                        'https://images.pokemontcg.io/ex14/91_hires.png',
+                    types: ['Colorless'],
                     supertype: 'Pokémon',
                     subtype: 'EX',
-                    evolvesFrom: 'Makuhita',
+                    evolvesFrom: 'Skitty',
                     ability: {
-                        name: 'Commanding Aura',
+                        name: 'Constrain',
                         text:
-                            "As long as Hariyama ex is your Active Pokémon, your opponent can't play any Stadium cards from his or her hand.",
-                        type: 'Poké-Body',
+                            "Once during your turn (before your attack), you may use this power. Each player discards cards until that player has 6 cards in his or her hand. (You discard first.) This power can't be used if Delcatty ex is affected by a Special Condition.",
+                        type: 'Poké-Power',
                     },
-                    hp: '110',
-                    retreatCost: ['Colorless', 'Colorless'],
-                    convertedRetreatCost: 2,
-                    number: '100',
-                    artist: 'Ryo Ueda',
+                    hp: '90',
+                    convertedRetreatCost: 0,
+                    number: '91',
+                    artist: 'Shizurow',
                     rarity: 'Rare Holo EX',
                     series: 'EX',
-                    set: 'Deoxys',
-                    setCode: 'ex8',
+                    set: 'Crystal Guardians',
+                    setCode: 'ex14',
                     text: [
                         'When Pokémon-ex has been Knocked Out, your opponent takes 2 Prize cards.',
                     ],
                     attacks: [
                         {
-                            cost: ['Fighting', 'Colorless'],
-                            name: 'Knock Off',
+                            cost: ['Colorless'],
+                            name: 'Upstream',
                             text:
-                                "Choose 1 card from your opponent's hand without looking and discard it.",
-                            damage: '40',
-                            convertedEnergyCost: 2,
+                                'Search your discard pile for all Energy cards. This attack does 10 damage times the number of Energy cards you find there. Show them to your opponent, and put them on top of your deck. Shuffle your deck afterward.',
+                            damage: '10×',
+                            convertedEnergyCost: 1,
                         },
                         {
-                            cost: ['Fighting', 'Fighting', 'Colorless'],
-                            name: 'Pivot Throw',
-                            text:
-                                "During your opponent's next turn, any damage done to Hariyama ex by attacks is increased by 10 (before applying Weakness and Resistance).",
-                            damage: '80',
+                            cost: ['Colorless', 'Colorless', 'Colorless'],
+                            name: 'Tail Slap',
+                            text: '',
+                            damage: '60',
                             convertedEnergyCost: 3,
                         },
                     ],
                     weaknesses: [
                         {
-                            type: 'Psychic',
+                            type: 'Fighting',
+                            value: '×2',
+                        },
+                    ],
+                },
+                {
+                    id: 'ex14-100',
+                    name: 'Celebi Star',
+                    nationalPokedexNumber: 251,
+                    imageUrl: 'https://images.pokemontcg.io/ex14/100.png',
+                    imageUrlHiRes:
+                        'https://images.pokemontcg.io/ex14/100_hires.png',
+                    types: ['Grass'],
+                    supertype: 'Pokémon',
+                    subtype: 'Basic',
+                    ability: {
+                        name: 'Time Travel',
+                        text:
+                            "If Celebi Star would be Knocked Out by damage from an opponent's attack, you may flip a coin. If heads, Celebi Star is not Knocked Out, discard all cards attached to Celebi Star, and put Celebi Star on the bottom of your deck.",
+                        type: 'Poké-Power',
+                    },
+                    hp: '60',
+                    retreatCost: ['Colorless'],
+                    convertedRetreatCost: 1,
+                    number: '100',
+                    artist: 'Masakazu Fukuda',
+                    rarity: 'Rare Holo',
+                    series: 'EX',
+                    set: 'Crystal Guardians',
+                    setCode: 'ex14',
+                    text: [
+                        "You can't have more than 1 Pokémon Star in your deck.",
+                    ],
+                    attacks: [
+                        {
+                            cost: ['Grass'],
+                            name: 'Leaf Shade',
+                            text:
+                                "Count the amount of Energy attached to Celebi Star. Put that many damage counters on 1 of your opponent's Pokémon.",
+                            damage: '',
+                            convertedEnergyCost: 1,
+                        },
+                    ],
+                    weaknesses: [
+                        {
+                            type: 'Fire',
                             value: '×2',
                         },
                     ],

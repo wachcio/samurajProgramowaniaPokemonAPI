@@ -1,0 +1,45 @@
+*,
+::before,
+::after {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+.title {
+    margin: 2em;
+}
+
+.search {
+    position: absolute;
+    top: 2em;
+    right: 5em;
+    border: none;
+    border-bottom: 2px orange solid;
+    line-height: 2em;
+    font-size: 1.4em;
+}
+
+.cards {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; */
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2.5em;
+}
+.card {
+    max-width: 245px;
+}
+.card__name {
+    font-size: 1.2em;
+    font-weight: 700;
+    float: left;
+}
+
+.card__number {
+    float: right;
+}

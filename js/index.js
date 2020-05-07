@@ -7,18 +7,21 @@ class Card {
         this.initialize();
     }
     initialize() {
-        // this.createCard();
+        this.createCard();
     }
     createCard() {
         const card = document.createElement('div');
         card.classList.add('card');
 
-        card.innerHTML = `<H2>${cardData.name}</H2>`;
-        card.innerHTML = `<p class="card__number">${this.cardData.nationalPokedexNumber}</p>`;
-        card.innerHTML = `<img src=${this.cardData.imageUrl}/>`;
+        card.innerHTML = `<H2 class="card__name>${this.cardData.name}</H2>`;
+        card.innerHTML += `<p class="card__number">Nr: ${this.cardData.nationalPokedexNumber}</p>`;
+        card.innerHTML += `<img class="card__img" src=${this.cardData.imageUrl}/>`;
+        card.innerHTML += `<p class="card__supertype">Supertype: ${this.cardData.supertype}</p>`;
+        card.innerHTML += `<p class="card__subtype">Subtype: ${this.cardData.subtype}</p>`;
+        card.innerHTML += `<p class="card__rarity">Rarity: ${this.cardData.rarity}</p>`;
 
         this.UIMainElement.appendChild(card);
-        console.log('UI', this.UIMainElement);
+        // console.log('UI', this.UIMainElement);
     }
 }
 class Pokemon {
@@ -55,10 +58,8 @@ class Pokemon {
     }
 
     createCards() {
-        // if (this.downloadData.length > 0) {
-        console.log(typeof this.downloadData);
-        this.downloadData.forEach((e) => {
-            let card = new Card({
+        this.downloadData.cards.forEach((e) => {
+            new Card({
                 name: e.name,
                 nationalPokedexNumber: e.nationalPokedexNumber,
                 imageUrl: e.imageUrl,
@@ -66,8 +67,6 @@ class Pokemon {
                 subtype: e.subtype,
                 rarity: e.rarity,
             });
-            card.createCard();
-            console.log(card);
         });
     }
     // }

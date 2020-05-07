@@ -33,6 +33,7 @@ class Pokemon {
         // UI
         this.UIMainElement = document.querySelector('section.cards');
         this.loader = document.querySelector('.load_more__loader');
+        this.searchInput = document.querySelector('.search');
 
         // Variables
         this.state = {};
@@ -45,6 +46,10 @@ class Pokemon {
     }
 
     initialize() {
+        this.searchInput.addEventListener(
+            'keypress',
+            this.filtersData.bind(this)
+        );
         this.getDataFromAPI();
     }
 
@@ -56,14 +61,16 @@ class Pokemon {
             .then(({ data }) => {
                 this.downloadData = data;
 
-                this.createCards();
+                this.createCards(this.downloadData);
             });
         this.currentPage++;
     }
 
-    createCards() {
+    createCards(data) {
+        console.log('cards data', data);
+
         this.loader.classList.remove('load_more__loader--visible');
-        this.downloadData.cards.forEach((e) => {
+        data.cards.forEach((e) => {
             new Card({
                 name: e.name,
                 number: e.number,
@@ -72,6 +79,28 @@ class Pokemon {
                 subtype: e.subtype,
                 rarity: e.rarity,
             });
+        });
+    }
+    filtersData(e) {
+        console.log('download data', this.downloadData);
+
+        const regexStr =
+            '(?=.*' + e.target.value.split(/,|\s/).join(')(?=.*') + ')';
+        const searchRegEx = new RegExp(regexStr, 'gi');
+
+        this.createCards({
+            cards: _.sortBy(
+                _.filter(this.downloadData, (o) => {
+                    let result =
+                        String(o.name).search(searchRegEx) &&
+                        String(o.number).search(searchRegEx) &&
+                        String(o.supertype).search(searchRegEx) &&
+                        String(o.subtype).search(searchRegEx);
+                    String(o.rarity).search(searchRegEx);
+                    return result == 0 ? true : false;
+                }),
+                'name'
+            ),
         });
     }
     // }

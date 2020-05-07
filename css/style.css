@@ -50,12 +50,13 @@ body {
     justify-content: center;
 }
 .load_more__loader {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     margin: 0 auto;
     transform: translate(-50%, -50%);
     display: none;
+    opacity: 0.7;
 }
 
 .load_more__loader--visible {

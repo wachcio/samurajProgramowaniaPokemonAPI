@@ -4,11 +4,9 @@ class Card {
         // UI
         this.UIMainElement = document.querySelector('section.cards');
 
-        this.initialize();
-    }
-    initialize() {
         this.createCard();
     }
+
     createCard() {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -79,12 +77,14 @@ class Pokemon {
             });
         });
     }
+
     filtersData(e) {
         const regexStr =
             '(?=.*' + e.target.value.split(/,|\s/).join(')(?=.*') + ')';
         const searchRegEx = new RegExp(regexStr, 'gi');
 
         let searchResult = _.filter(this.downloadData.cards, (o) => {
+            //Search is case insensitive and in all fields.
             let result =
                 String(o.name).search(searchRegEx) &&
                 String(o.number).search(searchRegEx) &&
@@ -98,5 +98,4 @@ class Pokemon {
             cards: searchResult,
         });
     }
-    // }
 }

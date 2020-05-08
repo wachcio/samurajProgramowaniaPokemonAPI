@@ -91,19 +91,18 @@ class Pokemon {
             '(?=.*' + e.target.value.split(/,|\s/).join(')(?=.*') + ')';
         const searchRegEx = new RegExp(regexStr, 'gi');
 
+        let searchResult = _.filter(this.downloadData, (o) => {
+            let result = String(o.name).search(searchRegEx);
+            // String(o.number).search(searchRegEx)&&
+            // String(o.supertype).search(searchRegEx) &&
+            // String(o.subtype).search(searchRegEx) &&
+            // String(o.rarity).search(searchRegEx);
+            return result == 0 ? true : false;
+        });
+        console.log('searchResult', searchResult[0]);
+
         this.createCards({
-            cards: _.sortBy(
-                _.filter(this.downloadData, (o) => {
-                    let result =
-                        String(o.name).search(searchRegEx) &&
-                        String(o.number).search(searchRegEx) &&
-                        String(o.supertype).search(searchRegEx) &&
-                        String(o.subtype).search(searchRegEx);
-                    String(o.rarity).search(searchRegEx);
-                    return result == 0 ? true : false;
-                }),
-                'name'
-            ),
+            cards: searchResult[0],
         });
     }
     // }

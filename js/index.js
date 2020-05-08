@@ -28,7 +28,7 @@ class Card {
 class Pokemon {
     constructor() {
         // API
-        this.URLCards = 'https://api.pokemontcg.io/v1/cards?pageSize=4&page=';
+        this.URLCards = 'https://api.pokemontcg.io/v1/cards?pageSize=';
 
         // UI
         this.UIMainElement = document.querySelector('section.cards');
@@ -38,6 +38,8 @@ class Pokemon {
         // Variables
         this.state = {};
         this.downloadData = {};
+        this.pageSize = 0;
+        this.limit = 4;
 
         this.currentPage = 0;
         this.isLoading = false;
@@ -55,19 +57,20 @@ class Pokemon {
 
     getDataFromAPI() {
         this.loader.classList.add('load_more__loader--visible');
+        this.pageSize += this.limit;
 
-        this.downloadData = axios
-            .get(`${this.URLCards}${this.currentPage + 1}`)
-            .then(({ data }) => {
-                this.downloadData = data;
+        axios.get(`${this.URLCards}${this.pageSize}`).then(({ data }) => {
+            this.downloadData = data;
 
-                this.createCards(this.downloadData);
-            });
+            this.createCards(this.downloadData);
+        });
         this.currentPage++;
     }
 
     createCards(data) {
         console.log('cards data', data);
+
+        this.UIMainElement.innerHTML = '';
 
         this.loader.classList.remove('load_more__loader--visible');
         data.cards.forEach((e) => {

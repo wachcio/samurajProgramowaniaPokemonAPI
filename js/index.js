@@ -21,7 +21,6 @@ class Card {
         card.innerHTML += `<p class="card__rarity">Rarity: ${this.cardData.rarity}</p>`;
 
         this.UIMainElement.appendChild(card);
-        // console.log('UI', this.UIMainElement);
     }
 }
 
@@ -36,10 +35,9 @@ class Pokemon {
         this.searchInput = document.querySelector('.search');
 
         // Variables
-        this.state = {};
         this.downloadData = {};
         this.pageSize = 0;
-        this.limit = 4;
+        this.limit = 40;
 
         this.currentPage = 0;
         this.isLoading = false;
@@ -48,14 +46,13 @@ class Pokemon {
     }
 
     initialize() {
-        this.searchInput.addEventListener(
-            'keypress',
-            this.filtersData.bind(this)
-        );
+        this.searchInput.addEventListener('keyup', this.filtersData.bind(this));
         this.getDataFromAPI();
     }
 
     getDataFromAPI() {
+        this.searchInput.value = '';
+
         this.loader.classList.add('load_more__loader--visible');
         this.pageSize += this.limit;
 
@@ -68,8 +65,6 @@ class Pokemon {
     }
 
     createCards(data) {
-        console.log('cards data', data);
-
         this.UIMainElement.innerHTML = '';
 
         this.loader.classList.remove('load_more__loader--visible');
@@ -85,24 +80,22 @@ class Pokemon {
         });
     }
     filtersData(e) {
-        console.log('download data', this.downloadData);
-
         const regexStr =
             '(?=.*' + e.target.value.split(/,|\s/).join(')(?=.*') + ')';
         const searchRegEx = new RegExp(regexStr, 'gi');
 
-        let searchResult = _.filter(this.downloadData, (o) => {
-            let result = String(o.name).search(searchRegEx);
-            // String(o.number).search(searchRegEx)&&
-            // String(o.supertype).search(searchRegEx) &&
-            // String(o.subtype).search(searchRegEx) &&
-            // String(o.rarity).search(searchRegEx);
+        let searchResult = _.filter(this.downloadData.cards, (o) => {
+            let result =
+                String(o.name).search(searchRegEx) &&
+                String(o.number).search(searchRegEx) &&
+                String(o.supertype).search(searchRegEx) &&
+                String(o.subtype).search(searchRegEx) &&
+                String(o.rarity).search(searchRegEx);
+
             return result == 0 ? true : false;
         });
-        console.log('searchResult', searchResult[0]);
-
         this.createCards({
-            cards: searchResult[0],
+            cards: searchResult,
         });
     }
     // }
